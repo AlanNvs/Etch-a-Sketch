@@ -11,7 +11,20 @@ function createDivs() {
   container.appendChild(sketchContainer);
   return div16;
 }
-createDivs();
+
+function createEvents() {
+  createDivs();
+
+  document.querySelectorAll(".div16").forEach(div16 => {
+    div16.addEventListener("mouseenter", () => {
+      div16.style.backgroundColor = "red";
+    });
+  });
+}
+createEvents();
+
+
+
 /* function appendContainer() {
   container = document.querySelector("#container");
 
