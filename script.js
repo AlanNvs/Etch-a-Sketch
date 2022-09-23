@@ -1,32 +1,50 @@
-function createDivs() {
-  container = document.querySelector("#container");
-  sketchContainer = document.createElement("div");
-  sketchContainer.classList.add("sketchContainer");
+"use strict"
+const container = document.querySelector("#container");
+function createDivs(number = 16) {
+  const sketchContainer = document.createElement("div");
+  sketchContainer.classList.add("sketch-container");
+  sketchContainer.style.setProperty("--num-rows-col", number);
+
   let div16;
-  for (i = 0; i < 16*16; i++) {
+
+  for (let i = 0; i < number*number; i++) {
     div16 = document.createElement("div");
     div16.classList.add("div16");
     sketchContainer.appendChild(div16);
   }
   container.appendChild(sketchContainer);
-  return div16;
+  createEvents();
 }
 
 function createEvents() {
-  createDivs();
-
   document.querySelectorAll(".div16").forEach(div16 => {
     div16.addEventListener("mouseenter", () => {
       div16.style.backgroundColor = "red";
     });
   });
 }
-createEvents();
 
 
+function createButtons() {
+  const btn = document.createElement("button");
+  btn.classList.add("btn");
+  btn.textContent = "New grid";
+  container.appendChild(btn);
 
-/* function appendContainer() {
-  container = document.querySelector("#container");
+  createDivs();
 
-  let div16 = 
-} */
+  let number = 16;
+  btn.addEventListener("click", () => {    
+    number = parseInt(prompt("Put a number until 100."));
+
+    deleteDivs();
+    createDivs(number);
+  });
+}
+createButtons();
+
+function deleteDivs() {
+  const sketchContainer = document.querySelector(".sketch-container");
+
+  container.removeChild(sketchContainer);
+}
