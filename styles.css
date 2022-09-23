@@ -1,0 +1,14 @@
+#container {
+
+}
+.sketchContainer {
+  display: grid;
+  grid-template-rows: repeat(16, 1fr);
+  grid-template-columns: repeat(16, 1fr);
+  height: 500px;
+  width: 500px;
+
+}
+.div16 {
+  border: 1px solid black;
+}
